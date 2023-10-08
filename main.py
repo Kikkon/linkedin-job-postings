@@ -21,8 +21,8 @@ pyg_html = pyg.walk(df, return_html=True)
 # Generate the HTML using Pygwalker
 pyg_table = pyg.walk(df, hideDataSourceConfig=True, vegaTheme='vega')
  
-# Embed the HTML into the Streamlit app
-components.html(pyg_html, height=1000, scrolling=True)
+# # Embed the HTML into the Streamlit app
+# components.html(pyg_html, height=1000, scrolling=True)
 
  
 # Embed the HTML into the Streamlit app
