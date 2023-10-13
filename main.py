@@ -23,7 +23,7 @@ def get_pyg_renderer() -> "StreamlitRenderer":
 renderer = get_pyg_renderer()
 
 # display explore ui
-renderer.render_explore()
+# renderer.render_explore()
 
 tab1, tab2 = st.tabs(
     ["Top 20 Game", "Statistics"]
