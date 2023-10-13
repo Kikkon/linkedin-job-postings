@@ -26,16 +26,16 @@ renderer = get_pyg_renderer()
 renderer.render_explore()
 
 tab1, tab2 = st.tabs(
-    ["Top 20 Game", "Statistics"]
+    ["Top 20 Game", "Sales Info"]
 )
 
 # display chart ui
 with tab1:
     st.subheader("Top 20 Game")
-    renderer.render_pure_chart(2, height=600)
+    renderer.render_pure_chart(2, height=400)
+    st.subheader("User Count")
+    renderer.render_pure_chart(0, height=400)
 
 with tab2:
     st.subheader("Sales Info")
-    renderer.render_pure_chart(1, height=600)
-    st.subheader("User Count")
-    renderer.render_pure_chart(0, height=600)
+    renderer.render_pure_chart(1, height=2000)
