@@ -32,10 +32,10 @@ tab1, tab2 = st.tabs(
 # display chart ui
 with tab1:
     st.subheader("Top 20 Game")
-    renderer.render_pure_chart(2)
+    renderer.render_pure_chart(2, height=600)
 
 with tab2:
     st.subheader("Sales Info")
-    renderer.render_pure_chart(1)
+    renderer.render_pure_chart(1, height=600)
     st.subheader("User Count")
-    renderer.render_pure_chart(0)
+    renderer.render_pure_chart(0, height=600)
