@@ -26,20 +26,16 @@ renderer = get_pyg_renderer()
 renderer.render_explore()
 
 tab1, tab2 = st.tabs(
-    ["Area Distribution", "Gender Distribution"]
+    ["Top 20 Game", "Statistics"]
 )
 
 # display chart ui
 with tab1:
-    st.subheader("Country Distribution")
-    renderer.render_pure_chart(0)
-    st.subheader("Area Distribution")
+    st.subheader("Top 20 Game")
     renderer.render_pure_chart(2)
 
 with tab2:
-    st.subheader("Gender Distribution")
-    renderer.render_pure_chart(1)
-    st.subheader("Gender Distribution By Rank")
-    renderer.render_pure_chart(3)
-    st.subheader("Gender Distribution By Age")
-    renderer.render_pure_chart(4, width=400)
+    st.subheader("Sales Info")
+    renderer.render_pure_chart(1, width=400)
+    st.subheader("User Count")
+    renderer.render_pure_chart(0, width=400)
