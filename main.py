@@ -23,7 +23,7 @@ def get_pyg_renderer() -> "StreamlitRenderer":
 renderer = get_pyg_renderer()
 
 # display explore ui
-# renderer.render_explore()
+renderer.render_explore()
 
 tab1, tab2 = st.tabs(
     ["Top 20 Game", "Statistics"]
@@ -32,7 +32,7 @@ tab1, tab2 = st.tabs(
 # display chart ui
 with tab1:
     st.subheader("Top 20 Game")
-    renderer.render_pure_chart(2)
+    renderer.render_pure_chart(1)
 
 with tab2:
     st.subheader("Sales Info")
