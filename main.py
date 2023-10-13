@@ -3,7 +3,7 @@ import streamlit as st
 from pygwalker.api.streamlit import init_streamlit_comm, StreamlitRenderer
 
 st.set_page_config(
-    page_title="Use Pygwalker In Streamlit",
+    page_title="Video Game Sales with Ratings Statistics",
     layout="wide"
 )
 
