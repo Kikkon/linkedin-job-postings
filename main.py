@@ -7,8 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Billionaires Statistics")
-st.subheader("data source: https://www.kaggle.com/datasets/ramontanoeiro/summer-olympic-medals-1986-2020/data")
+st.title("Video Game Sales with Ratings Statistics")
 
 # Initialize pygwalker communication
 init_streamlit_comm()
@@ -16,7 +15,7 @@ init_streamlit_comm()
 # When using `use_kernel_calc=True`, you should cache your pygwalker renderer, if you don't want your memory to explode
 @st.cache_resource
 def get_pyg_renderer() -> "StreamlitRenderer":
-    df = pd.read_csv("./Summer_olympic_Medals.csv")
+    df = pd.read_csv("./Video_Games_Sales_as_at_22_Dec_2016.csv")
     # When you need to publish your application, you need set `debug=False`,prevent other users to write your config file.
     return StreamlitRenderer(df, spec="./billion_config.json", debug=True)
 
