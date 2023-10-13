@@ -1,29 +1,46 @@
-import pygwalker as pyg
 import pandas as pd
-import streamlit.components.v1 as components
 import streamlit as st
- 
-# Adjust the width of the Streamlit page
+from pygwalker.api.streamlit import init_streamlit_comm, StreamlitRenderer
+
 st.set_page_config(
     page_title="Use Pygwalker In Streamlit",
     layout="wide"
 )
- 
-# Add Title
-st.title("Use Pygwalker In Streamlit")
- 
-# Import your data
-df = pd.read_csv("job_postings.csv")
- 
-# Generate the HTML using Pygwalker
-pyg_html = pyg.walk(df, return_html=True)
 
-# Generate the HTML using Pygwalker
-pyg_table = pyg.walk(df, return_html=True, hideDataSourceConfig=True, vegaTheme='vega')
- 
-# Embed the HTML into the Streamlit app
-components.html(pyg_html, height=1000, scrolling=True)
+st.title("Billionaires Statistics")
+st.subheader("data source: https://www.kaggle.com/datasets/arshkon/linkedin-job-postings/data")
 
- 
-# Embed the HTML into the Streamlit app
-components.html(pyg_table, height=1000, scrolling=True)
+# Initialize pygwalker communication
+init_streamlit_comm()
+
+# When using `use_kernel_calc=True`, you should cache your pygwalker renderer, if you don't want your memory to explode
+@st.cache_resource
+def get_pyg_renderer() -> "StreamlitRenderer":
+    df = pd.read_csv("./job_postings.csv")
+    # When you need to publish your application, you need set `debug=False`,prevent other users to write your config file.
+    return StreamlitRenderer(df, spec="./billion_config.json", debug=True)
+
+
+renderer = get_pyg_renderer()
+
+# display explore ui
+renderer.render_explore()
+
+tab1, tab2 = st.tabs(
+    ["Area Distribution", "Gender Distribution"]
+)
+
+# display chart ui
+with tab1:
+    st.subheader("Country Distribution")
+    renderer.render_pure_chart(0)
+    st.subheader("Area Distribution")
+    renderer.render_pure_chart(2)
+
+with tab2:
+    st.subheader("Gender Distribution")
+    renderer.render_pure_chart(1)
+    st.subheader("Gender Distribution By Rank")
+    renderer.render_pure_chart(3)
+    st.subheader("Gender Distribution By Age")
+    renderer.render_pure_chart(4, width=400)
