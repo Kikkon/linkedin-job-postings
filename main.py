@@ -36,6 +36,6 @@ with tab1:
 
 with tab2:
     st.subheader("Sales Info")
-    renderer.render_pure_chart(1, width=400)
+    renderer.render_pure_chart(1)
     st.subheader("User Count")
-    renderer.render_pure_chart(0, width=400)
+    renderer.render_pure_chart(0)
