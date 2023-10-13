@@ -17,13 +17,13 @@ init_streamlit_comm()
 def get_pyg_renderer() -> "StreamlitRenderer":
     df = pd.read_csv("./Video_Games_Sales_as_at_22_Dec_2016.csv")
     # When you need to publish your application, you need set `debug=False`,prevent other users to write your config file.
-    return StreamlitRenderer(df, spec="./config.json", debug=True)
+    return StreamlitRenderer(df, spec="./config.json", debug=False)
 
 
 renderer = get_pyg_renderer()
 
 # display explore ui
-renderer.render_explore()
+#renderer.render_explore()
 
 tab1, tab2 = st.tabs(
     ["Area Distribution", "Gender Distribution"]
